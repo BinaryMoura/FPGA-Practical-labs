@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="1000" height="800">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1976d2"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="800" fill="#fafafa"/>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">Componentes do CLB: Visão em Nível de Portas</text>
+  
+  <!-- ========== SECTION 1: LUT (Look-Up Table) ========== -->
+  <rect x="20" y="50" width="460" height="350" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="250" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1565c0">1. LUT (Look-Up Table) - Lógica Combinacional</text>
+  
+  <!-- LUT Concept -->
+  <text x="40" y="100" font-family="Arial, sans-serif" font-size="12" fill="#555">Uma LUT de 2 entradas é uma memória 4×1 que armazena saídas da tabela verdade:</text>
+  
+  <!-- Truth Table -->
+  <rect x="40" y="115" width="140" height="110" rx="3" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="110" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#333">Tabela Verdade: AND</text>
+  <text x="55" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333">A B | Saída</text>
+  <line x1="50" y1="162" x2="170" y2="162" stroke="#bbb" stroke-width="1"/>
+  <text x="55" y="180" font-family="Arial, sans-serif" font-size="12" fill="#333">0 0 |  0</text>
+  <text x="55" y="198" font-family="Arial, sans-serif" font-size="12" fill="#333">0 1 |  0</text>
+  <text x="55" y="216" font-family="monospace" font-size="12" fill="#d32f2f" font-weight="bold">1 0 |  0</text>
+  <text x="55" y="234" font-family="monospace" font-size="12" fill="#2e7d32" font-weight="bold">1 1 |  1</text>
+  
+  <!-- 4:1 MUX representation of LUT -->
+  <text x="220" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Implementado como MUX 4:1:</text>
+  
+  <!-- MUX Box -->
+  <rect x="320" y="150" width="100" height="140" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+  <text x="370" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1565c0">MUX 4:1</text>
+  
+  <!-- Data Inputs -->
+  <text x="325" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333">D0=0</text>
+  <text x="325" y="225" font-family="Arial, sans-serif" font-size="11" fill="#333">D1=0</text>
+  <text x="325" y="250" font-family="monospace" font-size="11" fill="#d32f2f" font-weight="bold">D2=0</text>
+  <text x="325" y="275" font-family="monospace" font-size="11" fill="#2e7d32" font-weight="bold">D3=1</text>
+  
+  <!-- Select Lines -->
+  <text x="350" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">S1 S0</text>
+  
+  <!-- Output -->
+  <line x1="420" y1="220" x2="460" y2="220" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="465" y="225" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1565c0">Saída</text>
+  
+  <!-- Select Inputs -->
+  <line x1="280" y1="310" x2="320" y2="280" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="230" y="315" font-family="Arial, sans-serif" font-size="11" fill="#333">A (S1)</text>
+  
+  <line x1="280" y1="340" x2="320" y2="300" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="230" y="345" font-family="Arial, sans-serif" font-size="11" fill="#333">B (S0)</text>
+  
+  <!-- Formula -->
+  <rect x="40" y="240" width="200" height="45" rx="3" fill="#fff9c4" stroke="#fbc02d" stroke-width="1"/>
+  <text x="50" y="260" font-family="monospace" font-size="11" fill="#333">LUT[A,B] = Memória[2×A + B]</text>
+  <text x="50" y="275" font-family="Arial, sans-serif" font-size="10" fill="#666">Endereço = A·2¹ + B·2⁰</text>
+  
+  <!-- Gate Level Detail -->
+  <text x="40" y="315" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Nível de Portas (implementação AND):</text>
+  
+  <!-- AND Gate -->
+  <path d="M 280 350 L 280 380 L 295 380 Q 320 380 320 365 Q 320 350 295 350 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="295" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#333">&amp;</text>
+  
+  <!-- Inputs to AND -->
+  <line x1="240" y1="360" x2="280" y2="360" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="220" y="355" font-family="Arial, sans-serif" font-size="11" fill="#333">A</text>
+  
+  <line x1="240" y1="375" x2="280" y2="375" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="220" y="380" font-family="Arial, sans-serif" font-size="11" fill="#333">B</text>
+  
+  <!-- Output -->
+  <line x1="320" y1="365" x2="370" y2="365" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="375" y="370" font-family="Arial, sans-serif" font-size="11" fill="#333">A·B</text>
+  
+  <!-- ========== SECTION 2: Flip-Flop ========== -->
+  <rect x="520" y="50" width="460" height="350" rx="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+  <text x="750" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2e7d32">2. Flip-Flop D - Lógica Sequencial</text>
+  
+  <text x="540" y="100" font-family="Arial, sans-serif" font-size="12" fill="#555">Armazena 1 bit. Atualiza apenas na borda do clock:</text>
+  
+  <!-- D Flip-Flop Symbol -->
+  <rect x="650" y="130" width="100" height="120" rx="3" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+  <text x="700" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1b5e20">FF-D</text>
+  <text x="700" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">(Borda de</text>
+  <text x="700" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Subida)</text>
+  
+  <!-- Triangle for edge trigger -->
+  <polygon points="680,210 690,230 670,230" fill="#388e3c"/>
+  
+  <!-- D Input -->
+  <line x1="600" y1="160" x2="650" y2="160" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="590" y="165" font-family="Arial, sans-serif" font-size="12" fill="#333">D</text>
+  
+  <!-- Clock -->
+  <line x1="600" y1="220" x2="650" y2="220" stroke="#d84315" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="585" y="210" font-family="Arial, sans-serif" font-size="11" fill="#d84315">CLK</text>
+  <text x="585" y="235" font-family="Arial, sans-serif" font-size="10" fill="#666">(gatilho ▲)</text>
+  
+  <!-- Q Output -->
+  <line x1="750" y1="170" x2="820" y2="170" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="825" y="175" font-family="Arial, sans-serif" font-size="12" fill="#333">Q</text>
+  
+  <!-- Q' Output -->
+  <line x1="750" y1="210" x2="820" y2="210" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="825" y="215" font-family="Arial, sans-serif" font-size="12" fill="#666">Q'</text>
+  
+  <!-- Timing Diagram -->
+  <rect x="540" y="270" width="180" height="110" rx="3" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="630" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Diagrama Temporal</text>
+  
+  <!-- Clock wave -->
+  <text x="550" y="310" font-family="Arial, sans-serif" font-size="10" fill="#d84315">CLK:</text>
+  <polyline points="580,315 590,305 590,315 600,305 600,315 610,305 610,315 620,305 620,315 630,305 630,315" fill="none" stroke="#d84315" stroke-width="1.5"/>
+  
+  <!-- D signal -->
+  <text x="550" y="340" font-family="Arial, sans-serif" font-size="10" fill="#333">D:</text>
+  <polyline points="580,345 610,345 610,330 640,330" fill="none" stroke="#333" stroke-width="1.5"/>
+  
+  <!-- Q output (delayed) -->
+  <text x="550" y="370" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32">Q:</text>
+  <polyline points="580,375 600,375 600,360 640,360" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  
+  <!-- Edge markers -->
+  <line x1="600" y1="300" x2="600" y2="380" stroke="#999" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="595" y="395" font-family="Arial, sans-serif" font-size="9" fill="#999">▲ Borda</text>
+  
+  <!-- Characteristic Equation -->
+  <rect x="740" y="280" width="220" height="50" rx="3" fill="#fff9c4" stroke="#fbc02d" stroke-width="1"/>
+  <text x="750" y="300" font-family="monospace" font-size="12" fill="#333">Q(t+1) = D(t) @ borda_subida(CLK)</text>
+  <text x="750" y="318" font-family="Arial, sans-serif" font-size="10" fill="#666">Próximo estado = Entrada na borda</text>
+  
+  <!-- ========== SECTION 3: Multiplexer ========== -->
+  <rect x="20" y="420" width="460" height="360" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+  <text x="250" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#e65100">3. Multiplexador 2:1 - Seleção de Saída</text>
+  
+  <text x="40" y="470" font-family="Arial, sans-serif" font-size="12" fill="#555">Seleciona entre saída combinacional (LUT) ou registrada (FF):</text>
+  
+  <!-- Mux Symbol -->
+  <polygon points="200,490 200,620 300,590 300,520" fill="#ffcc80" stroke="#f57c00" stroke-width="2"/>
+  <text x="250" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#e65100">MUX</text>
+  <text x="250" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">2:1</text>
+  
+  <!-- Input I0 (from LUT) -->
+  <line x1="100" y1="520" x2="200" y2="530" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="20" y="505" width="70" height="30" rx="3" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
+  <text x="55" y="525" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1565c0">Saída LUT</text>
+  <text x="130" y="515" font-family="Arial, sans-serif" font-size="11" fill="#1976d2">I0 (comb)</text>
+  
+  <!-- Input I1 (from FF) -->
+  <line x1="100" y1="590" x2="200" y2="580" stroke="#388e3c" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="20" y="575" width="70" height="30" rx="3" fill="#c8e6c9" stroke="#388e3c" stroke-width="1"/>
+  <text x="55" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2e7d32">Q do FF</text>
+  <text x="130" y="600" font-family="Arial, sans-serif" font-size="11" fill="#388e3c">I1 (reg)</text>
+  
+  <!-- Select Line -->
+  <line x1="230" y1="650" x2="250" y2="620" stroke="#d84315" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+  <text x="180" y="665" font-family="Arial, sans-serif" font-size="12" fill="#d84315">Seleção (bit config)</text>
+  <text x="255" y="645" font-family="Arial, sans-serif" font-size="10" fill="#666">S</text>
+  
+  <!-- Output -->
+  <line x1="300" y1="555" x2="400" y2="555" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="410" y="540" width="50" height="30" rx="3" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+  <text x="435" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Saída</text>
+  
+  <!-- Truth Table for MUX -->
+  <rect x="340" y="600" width="120" height="100" rx="3" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="400" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Tabela MUX</text>
+  <text x="360" y="645" font-family="Arial, sans-serif" font-size="11" fill="#333">S | Saída</text>
+  <line x1="350" y1="650" x2="450" y2="650" stroke="#bbb" stroke-width="1"/>
+  <text x="360" y="670" font-family="Arial, sans-serif" font-size="11" fill="#1976d2">0 | I0</text>
+  <text x="360" y="690" font-family="Arial, sans-serif" font-size="11" fill="#388e3c">1 | I1</text>
+  
+  <!-- Boolean Equation -->
+  <rect x="40" y="640" width="280" height="60" rx="3" fill="#fff9c4" stroke="#fbc02d" stroke-width="1"/>
+  <text x="50" y="665" font-family="monospace" font-size="13" fill="#333">Saída = (¬S · I0) + (S · I1)</text>
+  <text x="50" y="685" font-family="Arial, sans-serif" font-size="11" fill="#666">S=0: Saída=I0 (LUT) | S=1: Saída=I1 (FF)</text>
+  
+  <!-- ========== SECTION 4: Complete CLB ========== -->
+  <rect x="520" y="420" width="460" height="360" rx="8" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+  <text x="750" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#880e4f">4. Integração Completa do CLB</text>
+  
+  <!-- CLB Container -->
+  <rect x="560" y="470" width="380" height="290" rx="10" fill="#f8bbd9" stroke="#c2185b" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="750" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#880e4f">CLB</text>
+  
+  <!-- LUT Block -->
+  <rect x="580" y="520" width="90" height="80" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+  <text x="625" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1565c0">LUT</text>
+  <text x="625" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">f(A,B,C,D)</text>
+  <text x="625" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">Combinacional</text>
+  
+  <!-- LUT Inputs -->
+  <line x1="530" y1="540" x2="580" y2="540" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="520" y="535" font-family="Arial, sans-serif" font-size="10" fill="#333">A,B,C,D</text>
+  
+  <!-- FF Block -->
+  <rect x="700" y="540" width="80" height="100" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+  <text x="740" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">FF-D</text>
+  <text x="740" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">Sequencial</text>
+  <text x="740" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">Armazenamento</text>
+  
+  <!-- Clock to FF -->
+  <line x1="660" y1="630" x2="700" y2="615" stroke="#d84315" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="640" y="645" font-family="Arial, sans-serif" font-size="10" fill="#d84315">CLK</text>
+  
+  <!-- Connection LUT -> FF -->
+  <line x1="670" y1="560" x2="700" y2="565" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  
+  <!-- Mux Block -->
+  <polygon points="820,560 820,630 880,610 880,580" fill="#ffcc80" stroke="#f57c00" stroke-width="2"/>
+  <text x="850" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e65100">MUX</text>
+  
+  <!-- LUT to Mux -->
+  <line x1="670" y1="580" x2="820" y2="580" stroke="#1976d2" stroke-width="1.5"/>
+  <line x1="670" y1="580" x2="670" y2="580" stroke="#1976d2" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  
+  <!-- FF to Mux -->
+  <line x1="780" y1="590" x2="820" y2="595" stroke="#388e3c" stroke-width="1.5" marker-end="url(#arrow)"/>
+  
+  <!-- Mux Select -->
+  <line x1="850" y1="650" x2="850" y2="630" stroke="#d84315" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrow)"/>
+  <text x="800" y="665" font-family="Arial, sans-serif" font-size="10" fill="#d84315">Bit Config</text>
+  
+  <!-- CLB Output -->
+  <line x1="880" y1="595" x2="920" y2="595" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="925" y="580" width="60" height="30" rx="3" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="955" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Saída</text>
+  
+  <!-- Summary Equation -->
+  <rect x="560" y="695" width="380" height="55" rx="5" fill="#fff9c4" stroke="#fbc02d" stroke-width="1.5"/>
+  <text x="570" y="720" font-family="monospace" font-size="12" fill="#333">Saída_CLB = Config ? FF(LUT(Entradas), CLK) : LUT(Entradas)</text>
+  <text x="570" y="740" font-family="Arial, sans-serif" font-size="11" fill="#666">Seleciona entre saída registrada (sequencial) ou combinacional</text>
+</svg>

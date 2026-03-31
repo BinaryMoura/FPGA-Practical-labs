@@ -1,0 +1,30 @@
+# macOS system files
+.DS_Store
+
+# Gowin IDE - Auto-generated build files
+impl/
+temp/
+
+# Log files
+*.log
+
+# Generated netlist files
+*.vg
+
+# IDE user-specific project files
+*.prj.user
+*.gprj.user
+
+# Synthesis and Place-and-Route output files
+*.rpt.html
+*.rpt.txt
+*.pin.html
+*.power.html
+*_tr_content.html
+*_syn_resource.html
+cmd.do
+device.cfg
+
+# RTL parser temporary JSON files
+rtl_parser_arg.json
+rtl_parser.result
